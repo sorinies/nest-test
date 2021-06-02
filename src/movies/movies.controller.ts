@@ -1,4 +1,4 @@
-import { Controller, Delete, Get, Param, Post, Patch, Body, Query, NotFoundException } from '@nestjs/common';
+import { Controller, Delete, Get, Param, Post, Patch, Body } from '@nestjs/common';
 import { CreateMovieDto } from './dto/create-movie.dto';
 import { UpdateMovieDto } from './dto/update-movie.dto';
 import { Movie } from './entities/movie.entity';
@@ -29,7 +29,7 @@ export class MoviesController {
   }
 
   @Patch(":id") // 데이터의 일부만 수정
-  path(@Param('id') movieId: number, @Body() updateData: UpdateMovieDto) {
+  patch(@Param('id') movieId: number, @Body() updateData: UpdateMovieDto) {
     return this.moviesService.update(movieId, updateData);
   }
 }
